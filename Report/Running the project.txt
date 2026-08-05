@@ -1,0 +1,93 @@
+If you dont have uv then install it
+
+pip install uv
+
+Note: If you're on Windows
+
+If uv isn't recognized after installation, run it via Python:
+
+py -m uv --version
+
+or ensure your Python Scripts directory is on your PATH.
+
+
+
+Install all the dependancies
+
+Create a directory of your project
+and go in that directory
+then
+uv init
+
+Install all required dependancies in system
+
+uv add jupyterlab pandas numpy matplotlib scikit-learn xgboost lightgbm joblib
+
+
+
+
+# Start the Environment
+
+Launch JupyterLab using:
+
+bash
+uv run jupyter lab
+
+
+---
+
+# Stage 1: Train-Test Model Training
+
+Open the `main train test.ipynb` notebook in JupyterLab.
+
+After completing the final step, the following trained checkpoint files will be generated:
+
+- `imputer.pkl`
+- `onehot_encoder.pkl`
+- `best_xgboost_model.pkl`
+
+> Note: The `best_xgboost_model.pkl` model has already been trained on the train-test dataset and can be reused for prediction.
+
+Finally, load `best_xgboost_model.pkl` and run the prediction step. This will generate:
+
+- `xgboost_predictions_LoadedMODEL.csv`
+
+Also, run the metrics evaluation code to generate:
+
+- `metrics.csv`
+
+These are the final test results obtained from the train-test dataset.
+
+---
+
+# Stage 2: Validation Data Prediction
+
+Open the `Validation unknown.ipynb` notebook in JupyterLab.
+
+At the end of the notebook, load the trained model:
+
+- `best_xgboost_model.pkl`
+
+Run prediction on the validation dataset. This will generate:
+
+- `validation_predictions.csv`
+
+---
+
+# Stage 3: December Chart Prediction
+
+> Note: To make this stage work, I had to modify the `score.py` script because it expected exactly **12,000 rows**. This was no longer possible since some rows were removed during data cleaning due to **negative values in the `weight` column**, which were treated as invalid outliers.
+
+I also created the required missing columns and ensured that `December_input.csv` had the same structure, formatting, and feature columns as both `train-test.csv` and `validation.csv`.
+
+Finally, load the following preprocessing artifacts:
+
+- `imputer.pkl`
+- `onehot_encoder.pkl`
+
+Use them to:
+
+1. Impute missing values.
+2. Apply the same preprocessing transformations used during training.
+3. Generate the final predictions for the December input dataset.
+
