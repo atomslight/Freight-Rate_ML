@@ -1,10 +1,10 @@
-# Machine Learning Assessment Workflow
+# Freight Rate Machine Learning End to End Project
 
-# Result dir Contain all result at one place
+## Result dir Contain all result at one place
 
-# Report dir Contains how to run and setup the project doc and Report on whole project findings and whole report from start to end
+## Report dir Contains how to run and setup the project doc and Report on whole project findings and whole report from start to end
 
-# Checkpoint Trained State Models contains all the trained weights and model files
+## Checkpoint Trained State Models contains all the trained weights and model files
 
 ## Stage 1: Train-Test Pipeline
 
