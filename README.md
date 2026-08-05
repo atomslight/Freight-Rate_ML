@@ -1,5 +1,11 @@
 # Machine Learning Assessment Workflow
 
+# Result dir Contain all result at one place
+
+# Report dir Contains how to run and setup the project doc and Report on whole project findings and whole report from start to end
+
+# Checkpoint Trained State Models contains all the trained weights and model files
+
 ## Stage 1: Train-Test Pipeline
 
 **Notebook:** `main train test.ipynb`
